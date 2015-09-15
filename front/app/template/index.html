@@ -1,24 +1,33 @@
-<!-- @@include('../components/head/head.html') -->
+@@include('../components/head/head.html')
 
 <body>
 
-<!-- @@include('../components/noscript/noscript.html') -->
+@@include('../components/noscript/noscript.html')
 
 <div class="container">
  
-<!-- @@include('../components/header/header.html') -->
+@@include('../components/header/header.html')
 
-
+@@include('../components/slider/slider-head.html')
 
 <!-- @@include('../components/footer/footer.html') -->
         
 </div>
 
-<!-- @@include('../components/scripts/scripts.html') -->
+@@include('../components/scripts/scripts.html')
 
 
 <script>
-
+	 $('div.slider__head').sliderShop({
+	  	caseLimit: 1, //кол-во товаров в витрине
+	    spaceSection: 'auto', //расстояние между секциями
+	    animation: 'hide-show', //тип анимации
+	    timer: 8000, //автопереключение
+	    repeat: true, //показ слайдов по кругу
+	    animBox: 'slider__anim', // селектор вспдывающих блоков
+	    countBox: 'slider__ind', //селектор списка
+	    countSelect: true
+  });
 </script>
 
 

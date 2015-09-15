@@ -21,7 +21,8 @@
 
 
 /*comonents*/
-// @import "../components/header/header";
+@import "../components/header/header";
+@import "../components/slider/slider-head";
 // @import "../components/footer/footer";
 
 
@@ -49,11 +50,11 @@ html {
 }
 body {
     font-family: 'RobotoRegular', "Arial Regular", arial;
-    min-height: 808px;
+    min-height: 1808px;
     min-width: 1024px;
     width: 100%;
-    color: $clr-dark-default;
-    background-color: $clr-body;
+    // color: $clr-dark-default;
+    // background-color: $clr-body;
     -webkit-text-size-adjust: auto;
 }
 img {
@@ -66,8 +67,9 @@ a {
 
 a:hover,
 a:focus {
-   
-   text-decoration: underline;
+    text-decoration: none;
+   // text-decoration: underline;
+   color: $clr-red;
 }
 
 strong {
@@ -126,7 +128,7 @@ visibility: hidden;
     width: 100%;
 }
 .container {
-    max-width: 1400px;
+    // max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -149,7 +151,7 @@ input[type="text"] {
 textarea,
 input[type="password"],
 input[type="text"] {
-    border: 1px solid $clr-dark-default;
+    // border: 1px solid $clr-dark-default;
     padding: 5px 10px;
     box-sizing: border-box;
     width: 100%;
@@ -176,4 +178,10 @@ input[type="checkbox"] + label {
 
 strong {
     font-family: 'RobotoBold';
+}
+
+.container {
+    margin: 0 auto;
+    // max-width: 1300px;
+    position: relative;
 }
