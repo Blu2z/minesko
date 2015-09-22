@@ -1,0 +1,59 @@
+.slider {
+	&__work {
+		margin: 0 auto;
+		max-width: 1400px;
+		overflow: hidden;
+		position: relative;
+		height: 325px;
+
+		&--window {
+			max-width: 1400px;
+			margin: 0 auto;
+			height: 150px;
+			position: relative;
+		}
+
+		&--title {
+			max-width: 1200px;
+			// min-width: 1024px;
+			margin: 0 auto;
+			padding: 0 55px; 
+			box-sizing: border-box;
+			letter-spacing: -.3px;
+			height: 115px;
+		}
+
+		ul {
+			position: absolute;
+			overflow: hidden;
+			height: 150px;
+			// width: 10000px;
+		}
+
+		li {
+			float: left;
+			box-sizing: border-box;
+		}
+
+		.nav {
+			position: relative;
+			font-size: 14px;
+			line-height: 1em;
+			// margin: 5px 10px;
+			// float: right;
+
+			&:hover {
+				// background-position: 0 0;
+			}
+
+			&--prev {
+				margin-right: 15px;
+
+			}
+
+			&--next {
+				// left: 377px;
+			}
+		}
+	}
+}

@@ -10,7 +10,19 @@
 
 @@include('../components/slider/slider-head.html')
 
-<!-- @@include('../components/footer/footer.html') -->
+@@include('../components/content/content.html')
+
+@@include('../components/contact/contact.html')
+
+@@include('../components/gallery/gallery.html')
+
+@@include('../components/content/content2.html')
+
+@@include('../components/content/content3.html')
+
+@@include('../components/slider/slider.html')
+
+@@include('../components/footer/footer.html')
         
 </div>
 
@@ -22,12 +34,22 @@
 	  	caseLimit: 1, //кол-во товаров в витрине
 	    spaceSection: 'auto', //расстояние между секциями
 	    animation: 'hide-show', //тип анимации
-	    timer: 8000, //автопереключение
+	    timer: false, //автопереключение
 	    repeat: true, //показ слайдов по кругу
-	    animBox: 'slider__anim', // селектор вспдывающих блоков
+	    animBox: 'slider__anim', // селектор всплывающих блоков
 	    countBox: 'slider__ind', //селектор списка
-	    countSelect: true
-  });
+	    countSelect: true,
+	    response: true
+  	});
+
+	 $('div.slider__work').sliderShop({
+	  	caseLimit: 5, //кол-во товаров в витрине
+	    spaceSection: 'auto', //расстояние между секциями
+	    animation: 'slide', //тип анимации
+	    timer: false, //автопереключение
+	    repeat: true, //показ слайдов по кругу
+	    response: true
+  	})
 </script>
 
 

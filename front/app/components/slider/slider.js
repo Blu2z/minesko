@@ -33,6 +33,8 @@ if (typeof Object.create !== 'function') {
             var self = this;
             var swither, wrapper, cnt;
 
+            console.log(self);
+
             self.maxScrollPosition = 0;
             self.elem = elem;
 
@@ -42,6 +44,11 @@ if (typeof Object.create !== 'function') {
             this.swither = this.wrapper.children().addClass('swither__item'); 
             this.cnt = this.wrapper.find('.swither__item').length;
             this.countBoxs = $(this.elem).find('.' + this.options.countBox);
+            this.originSize = parseFloat($(self.elem).css('max-width'));
+            // this.originHeightList = this.wrapper.height();
+            this.deltaHeight = $(elem).outerHeight(true) - this.wrapper.height();
+
+            console.log('test:' + $(elem).outerHeight(true) + ',' + this.deltaHeight);
 
             self.calcConst();
 
@@ -56,6 +63,10 @@ if (typeof Object.create !== 'function') {
             });
 
             if (this.options.animBox) this.prepareTooltip();
+
+            if (this.options.response) this.response();
+
+            if (this.options.touch) this.initTouch();
 
             if (this.options.countSelect) {
                 this.countBoxs.on('click', function () {
@@ -95,7 +106,7 @@ if (typeof Object.create !== 'function') {
                 totalWidth = 0,
                 section = $(this.elem).outerWidth() - 40,
                 space = this.wrapper.parent().width() - this.swither.outerWidth(true)*this.options.caseLimit,
-                elspace =(this.options.spaceSection === 'auto') 
+                elspace = (this.options.spaceSection === 'auto') 
                                                 ? space / (this.options.caseLimit * 2) 
                                                 : this.options.spaceSection;
 
@@ -119,6 +130,74 @@ if (typeof Object.create !== 'function') {
             this.wrapper.width(totalWidth + 20);
 
             this.swither.first().addClass('swither__item--edge');
+        },
+
+        response: function () {
+            var self = this;
+
+            $(window).on('resize', function (){
+
+                var newSize = $(self.elem).outerWidth(true),
+                    originSize = parseFloat($(self.elem).css('max-width'));
+                    // originHeight = 
+
+                self.swither.width((newSize > originSize) 
+                    ? originSize / self.options.caseLimit 
+                    : newSize / self.options.caseLimit);
+
+                // console.log(self.swither.height() + '-' + self.deltaHeight)
+
+                $(self.elem).height(self.swither.height() + self.deltaHeight);
+
+                // console.log(originSize + ':' + newSize);
+
+                self.calcConst();
+
+                var newPosition = $(self.elem).find('.swither__item--edge').position().left;
+
+                self.wrapper.css('left', - newPosition);
+
+            });
+        },
+
+        initTouch: function () {
+            var self = this;
+
+            this.touch = {
+                start: {x: 0, y: 0},
+
+                end: {x: 0, y: 0},
+
+                onTouchStart: function (e) {
+                     self.touch.start.x = e.originalEvent.changedTouches[0].pageX;
+                },
+
+                onTouchMove: function (e) {
+                    var orig = e.originalEvent,
+                        xMovement = Math.abs(orig.changedTouches[0].pageX - slider.touch.start.x),
+                        yMovement = Math.abs(orig.changedTouches[0].pageY - slider.touch.start.y);
+
+                    if((xMovement * 3) > yMovement){ e.preventDefault() }
+                },
+
+                onTouchEnd: function (e) {
+                    self.touch.end.x = e.originalEvent.changedTouches[0].pageX;
+                    self.distance = self.touch.end.x - self.touch.start.x;
+
+                    if ( Math.abs(self.distance) > 50) {
+                        var $targetItem = $(self.elem).find('.swither__item--edge');
+
+                        (self.distance > 0)
+                            ? self.toGalleryItem($targetItem.prev())
+                            : self.toGalleryItem($targetItem.next());
+                    }
+                }
+            }
+
+            $(this.elem).on('touchstart', self.touch.onTouchStart)
+                        .on('touchmove', self.touch.onTouchMove)
+                        .on('touchend', this.touch.onTouchEnd);
+
         },
 
         prepareTooltip: function () {
@@ -233,9 +312,9 @@ if (typeof Object.create !== 'function') {
             slider.init( options, this );
         });
 
-    }; 
+    };
 
-   $.fn.sliderShop.options = {
+    $.fn.sliderShop.options = {
         caseLimit: 4, //кол-во товаров в витрине
         spaceSection: 'auto', //расстояние между секциями
         animation: 'slide', //тип анимации
@@ -244,8 +323,9 @@ if (typeof Object.create !== 'function') {
         countSelect: false, //выбор по индикатору
         timer: false, //автопереключение
         repeat: false, //показ слайдов по кругу
-        animBox: null // всплывающие блоки - $(селектор)
-
+        animBox: null, // всплывающие блоки-подсказки - (селектор)
+        response: false,
+        touch: true //тач-события
     };
 
 })( jQuery, window, document );

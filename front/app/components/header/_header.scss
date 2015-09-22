@@ -1,13 +1,13 @@
 .head {
+	background-color: rgba(255, 255, 255, 0.9);
 	height: 100px;
 	margin: 0 auto; 
-	background-color: rgba(255, 255, 255, 0.65);
 	position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-width: 1024px;
+	left: 0;
+	// min-width: 1024px;
+	top: 0;
+	width: 100%;
+	z-index: 10;
 
 	&__nav {
 		text-align: center;
@@ -24,12 +24,25 @@
 			vertical-align: middle;
 			display: inline-block;
 		}
+
+		ul {
+			// width: 1024px;
+			position: relative;
+			margin: 0 auto;
+		}
 	}
 }
 
 .logo {
-	padding: 20px;
+	padding: 15px 20px;
 	margin: 0 10px;
+	max-width: 115px;
+	display: inline-block;
+
+	&--img {
+		padding: 24px 10px;
+	}
+
 	&__firstname {
 		box-sizing: border-box;
 		display: inline-block;
@@ -54,5 +67,22 @@
 		line-height: 1.5em;
 		margin: 0 -10px; 
 		padding: 0 10px;
+	}
+
+	&--big {
+		max-width: 215px;
+		display: block;
+		margin-left: 15%;
+		.logo {
+			&__firstname {
+				font-size: 13px;
+				padding-top: 5px;
+			}
+			&__lastname {
+				font-size: 55px;
+				margin: 0 -20px; 
+				padding: 0 20px;
+			}
+		}
 	}
 }
