@@ -4,12 +4,12 @@
 		max-width: 1400px;
 		overflow: hidden;
 		position: relative;
-		height: 325px;
+		height: 470px;
 
 		&--window {
 			max-width: 1400px;
 			margin: 0 auto;
-			height: 150px;
+			height: 380px;
 			position: relative;
 		}
 
@@ -26,13 +26,18 @@
 		ul {
 			position: absolute;
 			overflow: hidden;
-			height: 150px;
+			height: 380px;
 			// width: 10000px;
 		}
 
 		li {
-			float: left;
 			box-sizing: border-box;
+			float: left;
+			text-align: center;
+
+			& > a {
+
+			}
 		}
 
 		.nav {
@@ -40,7 +45,6 @@
 			font-size: 14px;
 			line-height: 1em;
 			// margin: 5px 10px;
-			// float: right;
 
 			&:hover {
 				// background-position: 0 0;
@@ -48,11 +52,51 @@
 
 			&--prev {
 				margin-right: 15px;
-
+				&:before {
+					content: 'назад';
+				}
 			}
 
 			&--next {
-				// left: 377px;
+				&:before {
+					content: 'вперед';
+				}
+			}
+		}
+
+		img {
+			height: 100%;
+			padding: 0 10px;
+			box-sizing: border-box;
+		}
+
+		.slider__nav {
+			float: right;
+		}
+	}
+}
+
+
+@media screen and (max-width: 410px) {
+	.slider__work .slider__nav {
+		// float: none;
+		text-align: center;
+
+		.nav {
+			width: 35px;
+			padding: 10px;
+			box-sizing: border-box;
+			&--prev {
+				margin-right: 15px;
+				&:before {
+					content: '<';
+				}
+			}
+
+			&--next {
+				&:before {
+					content: '>';
+				}
 			}
 		}
 	}

@@ -33,11 +33,8 @@ if (typeof Object.create !== 'function') {
             var self = this;
             var swither, wrapper, cnt;
 
-            console.log(self);
-
             self.maxScrollPosition = 0;
             self.elem = elem;
-
             self.options = $.extend({}, $.fn.sliderShop.options, options);
 
             this.wrapper = $(this.elem).find('.slider__wrapper');
@@ -45,17 +42,21 @@ if (typeof Object.create !== 'function') {
             this.cnt = this.wrapper.find('.swither__item').length;
             this.countBoxs = $(this.elem).find('.' + this.options.countBox);
             this.originSize = parseFloat($(self.elem).css('max-width'));
-            // this.originHeightList = this.wrapper.height();
             this.deltaHeight = $(elem).outerHeight(true) - this.wrapper.height();
-
-            console.log('test:' + $(elem).outerHeight(true) + ',' + this.deltaHeight);
+            this.originHeight = $(elem).outerHeight(true);
+            // this.caseLimit = this.options.caseLimit;
 
             self.calcConst();
+
+            this.swither.first().addClass('swither__item--edge');
 
             $(this.elem).find('.nav').on('click', function (e) {
                 e.preventDefault();
 
                 var $targetItem = $(elem).find('.swither__item--edge');
+
+                if( $(this).hasClass('nav--prev') && !$targetItem.prev().length ) return;
+
 
                 $(this).hasClass('nav--prev') 
                     ? self.toGalleryItem($targetItem.prev())
@@ -63,8 +64,11 @@ if (typeof Object.create !== 'function') {
             });
 
             if (this.options.animBox) this.prepareTooltip();
-
-            if (this.options.response) this.response();
+            
+            if (this.options.response) {
+                this.response();
+                $('body').trigger('resize');
+            }
 
             if (this.options.touch) this.initTouch();
 
@@ -129,7 +133,7 @@ if (typeof Object.create !== 'function') {
 
             this.wrapper.width(totalWidth + 20);
 
-            this.swither.first().addClass('swither__item--edge');
+            
         },
 
         response: function () {
@@ -138,18 +142,44 @@ if (typeof Object.create !== 'function') {
             $(window).on('resize', function (){
 
                 var newSize = $(self.elem).outerWidth(true),
-                    originSize = parseFloat($(self.elem).css('max-width'));
-                    // originHeight = 
+                    originSize = parseFloat($(self.elem).css('max-width')),
+                    windowWidth = ($(window).width() > 1400) ? 1400 : $(window).width(),
+                    windowHeight = ($(window).height() - 70 < 400 ) ? 400 : $(window).height();
 
-                self.swither.width((newSize > originSize) 
-                    ? originSize / self.options.caseLimit 
-                    : newSize / self.options.caseLimit);
+                    // console.log('windowHeight' + windowHeight);
 
-                // console.log(self.swither.height() + '-' + self.deltaHeight)
+                windowHeight = (windowHeight > 700) ? 700 : windowHeight;
 
-                $(self.elem).height(self.swither.height() + self.deltaHeight);
+                if (self.options.response == 'height') {
+                    if (originSize > windowWidth) {
 
-                // console.log(originSize + ':' + newSize);
+                        $(self.elem).height(windowHeight + self.deltaHeight);
+
+                        self.swither.find('.slider__img').height(windowHeight);
+
+                        // $(self.elem).width(windowWidth);
+                        self.swither.width(windowWidth);
+
+                        self.swither.find('.slider__img')
+                            .css({
+                                'margin-left': (windowWidth - windowHeight * 1.75)/2,
+                                'margin-right': (windowWidth - windowHeight * 1.75)/2
+                            });
+                    }
+                } else {
+                    self.swither.width(
+                            (newSize > originSize) 
+                                ? originSize / self.options.caseLimit 
+                                : newSize / self.options.caseLimit);
+
+                    $(window).load(function(){
+                        $(self.elem).height(self.swither.height() + self.deltaHeight);
+                    });
+
+                        $(self.elem).height(self.swither.height() + self.deltaHeight);
+
+                    
+                }
 
                 self.calcConst();
 
@@ -174,8 +204,8 @@ if (typeof Object.create !== 'function') {
 
                 onTouchMove: function (e) {
                     var orig = e.originalEvent,
-                        xMovement = Math.abs(orig.changedTouches[0].pageX - slider.touch.start.x),
-                        yMovement = Math.abs(orig.changedTouches[0].pageY - slider.touch.start.y);
+                        xMovement = Math.abs(orig.changedTouches[0].pageX - self.touch.start.x),
+                        yMovement = Math.abs(orig.changedTouches[0].pageY - self.touch.start.y);
 
                     if((xMovement * 3) > yMovement){ e.preventDefault() }
                 },
@@ -231,22 +261,29 @@ if (typeof Object.create !== 'function') {
                     this.time = $(this).data('time');
 
                     $(this).css({
-                        left: this.x,
-                        top: this.y
+                        left: this.x + '%',
+                        top: this.y + '%'
                     });
 
                     var me = this;
 
                     setTimeout(function () {
-                        $(me).fadeIn(500);
+                        $(me).fadeIn(700);
                     }, this.time)
                 });
             }
             return
         },
 
-        toGalleryItem:  function ($targetItem) {
+        toGalleryItem:  function ($targetItem, callback) {
             var self = this;
+
+            if(!callback) {callback = function () {};}
+
+            if (!self.wrapper.find('.swither__item--edge')) {
+                console.log('error!');
+                return;
+            }
 
             if($targetItem.length) {
 
@@ -269,9 +306,12 @@ if (typeof Object.create !== 'function') {
                     }
 
                     switch (this.options.animation) {
-
                         case 'slide':
-                            this.wrapper.animate({'left' : - newPosition});
+                            this.wrapper.animate({'left' : - newPosition},300, function() {
+                                 callback();
+                            });
+
+                            self.animBox($targetItem);
                             break;
 
                         case 'hide-show':
@@ -283,25 +323,63 @@ if (typeof Object.create !== 'function') {
                                 self.animBox($targetItem);
                             })
                             break; 
-                    }
-
-                    
-                }
-                else if(this.options.repeat) {
+                    } 
+                } else if(this.options.repeat) {
                     if(!this.swither) {return}
-                
-                    var first = this.swither.removeClass('swither__item--edge').first().addClass('swither__item--edge')
-                    self.toGalleryItem(first)
-               
+
+                        var tar = $(this.elem).find('.swither__item--edge'),
+                            first = $(self.elem).find('.swither__item:first').clone();
+
+                    console.log(first);
+
+                         // self.swither
+                                // .children()
+                         //        .removeClass('swither__item--edge')
+                        self.wrapper.append(first);
+
+                        self.calcConst();
+
+
+                                // .addClass('swither__item--edge');
+                        // self.toGalleryItem(tar.next())
                 }
 
             } else if(this.options.repeat) {
                 if(!this.swither) {return}
-                
-                var first = this.swither.removeClass('swither__item--edge').first().addClass('swither__item--edge')
-                self.toGalleryItem(first)
+
+                var residue = this.swither
+                                    .clone()
+                                    .appendTo(this.wrapper)
+                                    .addClass('cloned')
+                                    .removeClass('swither__item--edge');
+
+                this.cnt = this.wrapper.find('.swither__item').length;
+                this.swither = this.wrapper.children();
+
+                self.calcConst();
+
+                var tar = $(this.elem).find('.swither__item--edge');
+
+                self.toGalleryItem(tar.next(), function() {
+
+                    var animCss = self.wrapper.css('transition');
+
+                    self.wrapper.find('.swither__item:not(.cloned)').remove();
+
+                    self.wrapper.find('.cloned').removeClass('cloned');
+
+                    self.wrapper
+                        .css('left', 0)
+                        .children()
+                        .first()
+                        .addClass('swither__item--edge');
+
+                    self.swither = self.wrapper.children();
+                    return;
+                })
                
             }
+
         } 
     };  
 
@@ -316,6 +394,7 @@ if (typeof Object.create !== 'function') {
 
     $.fn.sliderShop.options = {
         caseLimit: 4, //кол-во товаров в витрине
+        //caseMinLimit: 1, // минимальное кол-во при response: true
         spaceSection: 'auto', //расстояние между секциями
         animation: 'slide', //тип анимации
         count: false, // счетчик слайдов
@@ -324,7 +403,7 @@ if (typeof Object.create !== 'function') {
         timer: false, //автопереключение
         repeat: false, //показ слайдов по кругу
         animBox: null, // всплывающие блоки-подсказки - (селектор)
-        response: false,
+        response: false, //резина, адаптив
         touch: true //тач-события
     };
 

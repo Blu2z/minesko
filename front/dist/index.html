@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="description" content="" />
-    <meta name="viewport" content="width=1024px, initial-scale=0.25" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Minesko</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -31,20 +31,40 @@
 	<div class="head">
 		<div class="head__nav">
 			<ul>
-				<li><a href="#">Контакты</a></li>
-				<li><a href="#">Новости</a></li>
-				<li><a href="#">Услуги</a></li>
+				<li><a class="active" href="index.html">Главная</a></li>
+				<li><a href="news.html">Новости</a></li>
+				<li><a href="services.html">Услуги</a></li>
 				<li>
 					<div class="logo--img">
-						<a href="#">
+						<a href="index.html">
 							<img src="./images/logo.png" height="50" width="140" alt="logo">
 						</a>
 					</div>
 				</li>
-				<li><a href="#">Фотогалерея</a></li>
-				<li><a href="#">Колекции</a></li>
-				<li><a href="#">О нас</a></li>
+				<li><a href="gallery.html">Фотогалерея</a></li>
+				<li><a href="collections.html">Колекции</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
 			</ul>
+		</div>
+		<div class="head__nav--mobile">	
+			<div class="logo--img">
+				<a href="index.html">
+					<img src="./images/logo.png" height="50" width="140" alt="logo">
+				</a>
+			</div>
+			<a href="#" class="btn__head">
+				<span class="btn__line"></span>
+			</a>
+			<div class="head__list">
+				<ul>
+				<li><a href="index.html">Главная</a></li>
+				<li><a href="news.html">Новости</a></li>
+				<li><a href="services.html">Услуги</a></li>
+				<li><a href="gallery.html">Фотогалерея</a></li>
+				<li><a href="collections.html">Колекции</a></li>
+				<li><a href="contacts.html">Контакты</a></li>
+			</ul>
+			</div>
 		</div>
 	</div>
 </header>
@@ -56,7 +76,7 @@
 				<div class="slider__img">
 					<img src="./images/slider/slide-1.jpg" alt="slide1">
 				</div>
-				<div class="slider__anim block block--cost" data-time="200" data-x="290" data-y="650">
+				<div class="slider__anim block block--cost" data-time="400">
 					<div class="block--cost__name">Верхняя одежда</div>
 					<div class="block--cost__btn"><a href="#" class="button">смотреть детали</a></div>
 				</div>
@@ -65,7 +85,7 @@
 				<div class="slider__img">
 					<img src="./images/slider/slide-2.jpg"  alt="slide1">
 				</div>
-				<div class="slider__anim block block--cost" data-time="200" data-x="490" data-y="550">
+				<div class="slider__anim block block--cost" data-time="400">
 					<div class="block--cost__name">Вечерние платья</div>
 					<div class="block--cost__btn"><a href="#" class="button">смотреть детали</a></div>
 				</div>
@@ -74,7 +94,7 @@
 				<div class="slider__img">
 					<img src="./images/slider/slide-3.jpg" alt="slide1">
 				</div>
-				<div class="slider__anim block block--cost" data-time="200" data-x="190" data-y="150">
+				<div class="slider__anim block block--cost" data-time="400">
 					<div class="block--cost__name">Женская одежда</div>
 					<div class="block--cost__btn"><a href="#" class="button">смотреть детали</a></div>
 				</div>
@@ -83,7 +103,7 @@
 				<div class="slider__img">
 					<img src="./images/slider/slide-4.jpg"  alt="slide1">
 				</div>
-				<div class="slider__anim block block--cost" data-time="200" data-x="390" data-y="250">
+				<div class="slider__anim block block--cost" data-time="400">
 					<div class="block--cost__name">Свадебные платья</div>
 					<div class="block--cost__btn"><a href="#" class="button">смотреть детали</a></div>
 				</div>
@@ -125,6 +145,9 @@
 	</div>
 
 	<div class="content__block">
+		<div class="content__img">
+			<img src="./images/news-3.jpg" alt="foto">
+		</div>
 		<div class="content__text">
 			<div class="content__title">Lorem ipsum dolor sit amet.</div>
 			<div class="content__desc">
@@ -138,9 +161,7 @@
 				<a class="content__link" href="#">читать далее</a>
 			</div>
 		</div>
-		<div class="content__img">
-			<img src="./images/news-3.jpg" alt="foto">
-		</div>
+		
 	</div>
 
 	<div class="content__block">
@@ -166,284 +187,13 @@
 </div>
 
 
-<div class="contact">
-	<h1>
-		<span class="content__head">Контакты</span>
-	</h1>
-	<div class="logo logo--big">
-		<span class="logo__lastname">Minesko</span> <br>
-		<span class="logo__firstname">
-			<span class="clr--red">S</span>
-			<span>v</span>
-			<span>e</span>
-			<span>t</span>
-			<span>l</span>
-			<span>a</span>
-			<span>n</span>
-			<span>a</span>
-		</span>
-	</div>
-
-	<div class="contact__container">
-		<div class="contact__desc">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum veniam sequi quos, est eos asperiores voluptates doloremque. Harum, aliquam, deserunt? Cupiditate a inventore voluptas aut reprehenderit voluptate minus tempore cum.</p>
-			<p> Voluptatum veniam sequi quos, est eos asperiores voluptates doloremque. Harum, aliquam, deserunt? Cupiditate Lorem ipsum dolor sit adipisicing elit.a inventore voluptas aut reprehenderit voluptate minus tempore cum.</p>
-		</div>
-		
-		<div class="contact__info">
-			<ul class="contact__list">
-				<li>наши контакты:</li>
-				<li><i class="fa fa-map-marker"></i> Украина, г. Одесса, ул Дерибасовская 1а</li>
-				<li><i class="fa fa-phone"></i>099 12-34-567, 067 123-45-67</li>
-				<li><i class="fa fa-envelope-o"></i>minesko@gmail.com</li>
-				<li><i class="fa fa-skype"></i>MineskoSv.</li>
-				<li><i class="fa fa-instagram"></i>minesko-inst</li>
-				<li>
-					<ul class="contact__socials">
-						<li><a href="#"><i class="fa fa-vk"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="contact__container">
-		<script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=tLcseVnMefjaoS8WTn9EeXLNY1U0TSsj&id=map"></script>
-		<div class="map__wrap">
-			<div id="map" class="map"></div>
-		</div>
-	</div>
-</div>
-
-<div class="media">
-	<h1>
-		<span class="content__head">Галерея</span>
-	</h1>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-	<div class="media__card">
-		<a href="#">
-			<div class="media__img">
-				<img src="./images/gallery.jpg" alt="foto">
-			</div>
-			<div class="media__title">коллекция1</div>
-		</a>
-	</div>
-</div>
-
-<div class="content">
-	<h1>
-		<span class="content__head">Услуги</span>
-	</h1>
-
-	<div class="content__wrap">
-		<div class="content__block--full">
-			<div class="content__img">
-				<img src="./images/news-2.jpg" alt="foto">
-			</div>
-			<div class="content__text">
-				<div class="content__title">Lorem ipsum dolor sit amet.</div>
-				<div class="content__desc">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim culpa optio animi provident consequuntur expedita aliquid amet. Omnis eaque fuga debitis ipsum dignissimos, veniam laboriosam illo nisi libero eos qui!</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque!</p>
-				</div>
-				<div class="content__more">
-					<a class="content__link" href="#">читать далее</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="content__block--full">
-			<div class="content__img">
-				<img src="./images/news-3.jpg" alt="foto">
-			</div>
-			<div class="content__text">
-				<div class="content__title">Lorem ipsum dolor sit amet.</div>
-				<div class="content__desc">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim culpa optio animi provident consequuntur expedita aliquid amet. Omnis eaque fuga debitis ipsum dignissimos, veniam laboriosam illo nisi libero eos qui!</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque!
-					</p>
-				</div>
-				<div class="content__more">
-					<a class="content__link" href="#">читать далее</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="content__wrap">
-		<div class="content__block--full">
-			<div class="content__img">
-				<img src="./images/news-3.jpg" alt="foto">
-			</div>
-			<div class="content__text">
-				<div class="content__title">Lorem ipsum dolor sit amet.</div>
-				<div class="content__desc">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim culpa optio animi provident consequuntur expedita aliquid amet. Omnis eaque fuga debitis ipsum dignissimos, veniam laboriosam illo nisi libero eos qui!</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque!
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque!
-					</p>
-				</div>
-				<div class="content__more">
-					<a class="content__link" href="#">читать далее</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-</div>
-
-
-<div class="content">
-	<h1>
-		<span class="content__head">Коллекции</span>
-	</h1>
-
-	<div class="content__block content__block--romb">
-		<div class="content__text">
-			<div class="content__title">Зимняя коллекция 2015 года</div>
-			<div class="content__desc">
-				<div class="content__img">
-					<img src="./images/news-2.jpg" alt="foto">
-				</div>
-
-				<div class="content__wrapper">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque! <br>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim culpa optio animi provident consequuntur expedita aliquid amet. Omnis eaque fuga debitis ipsum dignissimos, veniam laboriosam illo nisi libero eos qui!
-					</p>
-					<div class="content__more">
-						<a class="content__link" href="#">читать далее</a>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="content__block content__block--romb">
-		<div class="content__text">
-			<div class="content__title">Зимняя коллекция 2015 года</div>
-			<div class="content__desc">
-				<div class="content__img">
-					<img src="./images/news-2.jpg" alt="foto">
-				</div>
-
-				<div class="content__wrapper">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque! <br>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim culpa optio animi provident consequuntur expedita aliquid amet. Omnis eaque fuga debitis ipsum dignissimos, veniam laboriosam illo nisi libero eos qui!
-					</p>
-					<div class="content__more">
-						<a class="content__link" href="#">читать далее</a>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="content__block content__block--romb">
-		<div class="content__text">
-			<div class="content__title">Зимняя коллекция 2015 года</div>
-			<div class="content__desc">
-				<div class="content__img">
-					<img src="./images/news-3.jpg" alt="foto">
-				</div>
-
-				<div class="content__wrapper">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro fugit nemo voluptatem sequi doloribus beatae provident, molestias, illum, molestiae tenetur nesciunt! Sunt autem quo, reiciendis accusamus id deleniti ullam doloremque! <br>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim culpa optio animi provident consequuntur expedita aliquid amet. Omnis eaque fuga debitis ipsum dignissimos, veniam laboriosam illo nisi libero eos qui!
-					</p>
-					<div class="content__more">
-						<a class="content__link" href="#">читать далее</a>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-
-</div>
-
-
 <div class="slider__work">
 	<div class="content__title">
 		<div>
 			Наши работы
-			<div class="slider__nav fl-r">
-				<a href="#" class="nav nav--prev content__link">назад</a>
-				<a href="#" class="nav nav--next content__link">вперед</a>
+			<div class="slider__nav">
+				<a href="#" class="nav nav--prev content__link"></a>
+				<a href="#" class="nav nav--next content__link"></a>
 			</div>
 		</div>
 		
@@ -451,42 +201,79 @@
 	<div class="slider__work--window">
 		<ul class="slider__wrapper">
 			<li>
-				<a href="#">
-					<img src="./images/slide-1.jpg" height="150" width="250" alt="foto">
+				<a href="./images/slider-small/1.jpg">
+					<img src="./images/slider-small/1-small.jpg" height="380" width="150" alt="foto">
 				</a>
 			</li>
 			<li>
-				<a href="#">
-					<img src="./images/slide-1.jpg" height="150" width="250" alt="foto">
+				<a href="./images/slider-small/2.jpg">
+					<img src="../../images/slider-small/2-small.jpg" height="380" width="150" alt="foto">
 				</a>
 			</li>
 			<li>
-				<a href="#">
-					<img src="./images/slide-1.jpg" height="150" width="250" alt="foto">
+				<a href="./images/slider-small/3.jpg">
+					<img src="./images/slider-small/3-small.jpg" height="380" width="150" alt="foto">
 				</a>
 			</li>
 			<li>
-				<a href="#">
-					<img src="./images/slide-1.jpg" height="150" width="250" alt="foto">
+				<a href="./images/slider-small/4.jpg">
+					<img src="./images/slider-small/4-small.jpg" height="380" width="150" alt="foto">
 				</a>
 			</li>
 			<li>
-				<a href="#">
-					<img src="./images/slide-1.jpg" height="150" width="250" alt="foto">
+				<a href="./images/slider-small/5.jpg">
+					<img src="./images/slider-small/5-small.jpg" height="380" width="150" alt="foto">
 				</a>
 			</li>
 			<li>
-				<a href="#">
-					<img src="./images/slide-1.jpg" height="150" width="250" alt="foto">
+				<a href="./images/slider-small/6.jpg">
+					<img src="./images/slider-small/6-small.jpg" height="380" width="150" alt="foto">
 				</a>
 			</li>
 			<li>
-				<a href="#">
-					<img src="./images/slide-1.jpg" height="150" width="250" alt="foto">
+				<a href="./images/slider-small/1.jpg">
+					<img src="./images/slider-small/1-small.jpg" height="380" width="150" alt="foto">
+				</a>
+			</li>
+			<li>
+				<a href="./images/slider-small/7.jpg">
+					<img src="./images/slider-small/7-small.jpg" height="380" width="150" alt="foto">
+				</a>
+			</li>
+			<li>
+				<a href="./images/slider-small/5.jpg">
+					<img src="./images/slider-small/5-small.jpg" height="380" width="150" alt="foto">
+				</a>
+			</li>
+			<li>
+				<a href="./images/slider-small/3.jpg">
+					<img src="./images/slider-small/3-small.jpg" height="380" width="150" alt="foto">
+				</a>
+			</li>
+			<li>
+				<a href="./images/slider-small/1.jpg">
+					<img src="./images/slider-small/1-small.jpg" height="380" width="150" alt="foto">
+				</a>
+			</li>
+			<li>
+				<a href="./images/slider-small/4.jpg">
+					<img src="./images/slider-small/4-small.jpg" height="380" width="150" alt="foto">
+				</a>
+			</li>
+			<li>
+				<a href="./images/slider-small/7.jpg">
+					<img src="./images/slider-small/7-small.jpg" height="380" width="150" alt="foto">
+				</a>
+			</li>
+			<li>
+				<a href="./images/slider-small/2.jpg">
+					<img src="./images/slider-small/2-small.jpg" height="380" width="150" alt="foto">
 				</a>
 			</li>
 		</ul>
 	</div>
+</div>
+
 </div>
 
 <footer>
@@ -518,8 +305,6 @@
 		</div>
 	</div>
 </footer>
-        
-</div>
 
 
     <script src="scripts/vendor.js"></script>
@@ -539,24 +324,38 @@
 	 $('div.slider__head').sliderShop({
 	  	caseLimit: 1, //кол-во товаров в витрине
 	    spaceSection: 'auto', //расстояние между секциями
-	    animation: 'hide-show', //тип анимации
-	    timer: 8000, //автопереключение
+	    animation: 'slide', //тип анимации
+	    timer: false, //автопереключение
 	    repeat: true, //показ слайдов по кругу
 	    animBox: 'slider__anim', // селектор всплывающих блоков
 	    countBox: 'slider__ind', //селектор списка
-	    countSelect: true
+	    countSelect: true,
+	    response: 'height'
   	});
 
 	 $('div.slider__work').sliderShop({
-	  	caseLimit: 5, //кол-во товаров в витрине
+	  	caseLimit: 7, //кол-во товаров в витрине
 	    spaceSection: 'auto', //расстояние между секциями
 	    animation: 'slide', //тип анимации
-	    timer: 7000, //автопереключение
+	    timer: 6000, //автопереключение
 	    repeat: true, //показ слайдов по кругу
-  	})
+	    response: true
+  	});
+
+	var btn = $('.btn__head'),
+		list = $('.head__list li');
+
+	btn.on('click', function (e) {
+		e.preventDefault();
+
+		$(this).toggleClass('active').hasClass('active') ? list.slideDown() : list.slideUp();
+	});
+
+	
+
+
+
 </script>
-
-
 
 
 </body>
