@@ -51,6 +51,30 @@
 
 		$(this).toggleClass('active').hasClass('active') ? list.slideDown() : list.slideUp();
 	});
+
+	$('.carousel--big').owlCarousel({
+	    items : 1,
+	    lazyLoad : true,
+	    navigation : true,
+	    pagination: false,
+	    singleItem : true,
+    	autoHeight : true,
+    	navigationText:	false
+	  });
+
+	$('.carousel--small').owlCarousel({
+	    items : 3,
+	    lazyLoad : true,
+	    navigation : true,
+	    pagination: false,
+    	navigationText:	false
+	  });
+
+	$(".fancybox").fancybox({
+		padding: 0
+	});
+ 
+// });
 </script>
 
 

@@ -7,7 +7,7 @@
 	top: 0;
 	width: 100%;
 	z-index: 10;
-	box-shadow: 0px 0px 5px 0px #757575;
+	box-shadow: 0 0 5px 0 #757575;
 
 	&__nav {
 		text-align: center;
@@ -65,8 +65,9 @@
 .logo {
 	padding: 15px 20px;
 	margin: 0 10px;
-	max-width: 115px;
+	max-width: 134px;
 	display: inline-block;
+	text-align: center;
 
 	&--img {
 		padding: 24px 10px;
@@ -99,7 +100,7 @@
 	}
 
 	&--big {
-		max-width: 215px;
+		max-width: 240px;
 		display: block;
 		margin: 0 auto;
 		.logo {
