@@ -46,7 +46,10 @@ if (typeof Object.create !== 'function') {
             this.originHeight = $(elem).outerHeight(true);
             // this.caseLimit = this.options.caseLimit;
 
-            self.calcConst();
+            $(window).load(function(){
+                console.log('1');
+                self.calcConst();
+            });
 
             this.swither.first().addClass('swither__item--edge');
 
@@ -65,10 +68,15 @@ if (typeof Object.create !== 'function') {
 
             if (this.options.animBox) this.prepareTooltip();
             
-            if (this.options.response) {
-                this.response();
-                $('body').trigger('resize');
-            }
+            $(window).load(function(){
+                if (self.options.response) {
+                    self.response();
+                    $('body').trigger('resize');
+                }
+            });
+            
+            
+            
 
             if (this.options.touch) this.initTouch();
 
@@ -106,6 +114,7 @@ if (typeof Object.create !== 'function') {
         },
 
         calcConst: function () {
+            console.log('calcConst');
             var self = this,
                 totalWidth = 0,
                 section = $(this.elem).outerWidth() - 40,
@@ -113,6 +122,8 @@ if (typeof Object.create !== 'function') {
                 elspace = (this.options.spaceSection === 'auto') 
                                                 ? space / (this.options.caseLimit * 2) 
                                                 : this.options.spaceSection;
+
+                
 
                 elspace = ( space < 0 ) ? 0 : elspace;
 
@@ -133,20 +144,23 @@ if (typeof Object.create !== 'function') {
 
             this.wrapper.width(totalWidth + 20);
 
+            console.log(totalWidth);
+
             
         },
 
         response: function () {
+            console.log('response');
             var self = this;
 
             $(window).on('resize', function (){
 
                 var newSize = $(self.elem).outerWidth(true),
                     originSize = parseFloat($(self.elem).css('max-width')),
-                    windowWidth = ($(window).width() > 1400) ? 1400 : $(window).width(),
+                    windowWidth = ($(window).width() > 1920) ? 1920 : $(window).width(),
                     windowHeight = ($(window).height() - 70 < 400 ) ? 400 : $(window).height();
 
-                    // console.log('windowHeight' + windowHeight);
+                    
 
                 windowHeight = (windowHeight > 700) ? 700 : windowHeight;
 
@@ -158,6 +172,7 @@ if (typeof Object.create !== 'function') {
                         self.swither.find('.slider__img').height(windowHeight);
 
                         // $(self.elem).width(windowWidth);
+                        console.log('windowWidth' + windowWidth);
                         self.swither.width(windowWidth);
 
                         self.swither.find('.slider__img')
@@ -167,8 +182,9 @@ if (typeof Object.create !== 'function') {
                             });
                     }
                 } else {
+                    console.log(originSize + ' ' + newSize)
                     self.swither.width(
-                            (newSize > originSize) 
+                            (newSize < originSize) 
                                 ? originSize / self.options.caseLimit 
                                 : newSize / self.options.caseLimit);
 

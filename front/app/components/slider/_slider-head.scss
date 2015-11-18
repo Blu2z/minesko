@@ -3,8 +3,8 @@
 		// transition: all 300ms ease-in-out;
 		margin: 0 auto;
 		position: relative;
-		max-width: 1400px;
-		height: 800px;
+		max-width: 100%;
+		height: 880px;
 
 		.nav {
 			position: absolute;
@@ -84,7 +84,7 @@
 
 	&__main {
 		height: 100%;
-		max-width: 1400px;
+		// max-width: 1400px;
 		position: relative;
 		overflow: hidden;
 		margin-top: 100px;
@@ -117,8 +117,8 @@
 			// }
 
 			img {
-				height: 100%;
-				max-width: auto !important;
+				// height: 100%;
+				// max-width: auto !important;
 			}
 		}
 	}
