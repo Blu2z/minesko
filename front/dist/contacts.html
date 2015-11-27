@@ -59,9 +59,9 @@
 				<ul>
 				<li><a href="index.html">Главная</a></li>
 				<li><a href="news.html">Новости</a></li>
-				<li><a href="services.html">Услуги</a></li>
+				<li><a href="services.html">Колекции</a></li>
 				<li><a href="gallery.html">Фотогалерея</a></li>
-				<li><a href="collections.html">Колекции</a></li>
+				<li><a href="collections.html">Услуги</a></li>
 				<li><a href="contacts.html">Контакты</a></li>
 			</ul>
 			</div>
@@ -288,14 +288,14 @@
 <script>
         $('div.slider__head').sliderShop({
         caseLimit: 1, //кол-во товаров в витрине
-        spaceSection: 'auto', //расстояние между секциями
+        spaceSection: 0, //расстояние между секциями
         animation: 'slide', //тип анимации
         timer: false, //автопереключение
         repeat: true, //показ слайдов по кругу
         animBox: 'slider__anim', // селектор всплывающих блоков
         countBox: 'slider__ind', //селектор списка
         countSelect: true,
-        response: 'height'
+        response: true
     });
 
     // $('div.slider__work').sliderShop({

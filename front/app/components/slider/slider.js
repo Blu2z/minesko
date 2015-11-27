@@ -31,7 +31,7 @@ if (typeof Object.create !== 'function') {
         init: function (options, elem) { 
 
             var self = this;
-            var swither, wrapper, cnt;
+            var swither, wrapper, cnt, busy;
 
             self.maxScrollPosition = 0;
             self.elem = elem;
@@ -44,6 +44,7 @@ if (typeof Object.create !== 'function') {
             this.originSize = parseFloat($(self.elem).css('max-width'));
             this.deltaHeight = $(elem).outerHeight(true) - this.wrapper.height();
             this.originHeight = $(elem).outerHeight(true);
+            this.busy = 0;
             // this.caseLimit = this.options.caseLimit;
 
             $(window).load(function(){
@@ -55,6 +56,13 @@ if (typeof Object.create !== 'function') {
 
             $(this.elem).find('.nav').on('click', function (e) {
                 e.preventDefault();
+
+                if(self.busy) {return;}
+                self.busy = 1;
+
+                setTimeout(function() {
+                    self.busy = 0;
+                },300);
 
                 var $targetItem = $(elem).find('.swither__item--edge');
 
@@ -122,8 +130,6 @@ if (typeof Object.create !== 'function') {
                 elspace = (this.options.spaceSection === 'auto') 
                                                 ? space / (this.options.caseLimit * 2) 
                                                 : this.options.spaceSection;
-
-                
 
                 elspace = ( space < 0 ) ? 0 : elspace;
 
@@ -194,7 +200,6 @@ if (typeof Object.create !== 'function') {
 
                         $(self.elem).height(self.swither.height() + self.deltaHeight);
 
-                    
                 }
 
                 self.calcConst();
@@ -238,7 +243,7 @@ if (typeof Object.create !== 'function') {
                             : self.toGalleryItem($targetItem.next());
                     }
                 }
-            }
+            };
 
             $(this.elem).on('touchstart', self.touch.onTouchStart)
                         .on('touchmove', self.touch.onTouchMove)
@@ -248,7 +253,7 @@ if (typeof Object.create !== 'function') {
 
         prepareTooltip: function () {
             var self = this,
-                animBoxs =  $(this.elem).find('.' + this.options.animBox);
+                animBoxs = $(this.elem).find('.' + this.options.animBox);
 
                 animBoxs.each(function(index, el) {
                     this.x = $(this).data('x');
@@ -288,10 +293,10 @@ if (typeof Object.create !== 'function') {
                     }, this.time)
                 });
             }
-            return
+            return;
         },
 
-        toGalleryItem:  function ($targetItem, callback) {
+        toGalleryItem: function ($targetItem, callback) {
             var self = this;
 
             if(!callback) {callback = function () {};}
@@ -374,6 +379,8 @@ if (typeof Object.create !== 'function') {
 
                 self.calcConst();
 
+
+
                 var tar = $(this.elem).find('.swither__item--edge');
 
                 self.toGalleryItem(tar.next(), function() {
@@ -381,6 +388,8 @@ if (typeof Object.create !== 'function') {
                     var animCss = self.wrapper.css('transition');
 
                     self.wrapper.find('.swither__item:not(.cloned)').remove();
+
+                    console.log('del');
 
                     self.wrapper.find('.cloned').removeClass('cloned');
 
