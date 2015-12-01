@@ -149,6 +149,7 @@
 		display: inline-block;
 		width: 43%;
 		box-sizing: border-box;
+		padding-top: 10px;
 	}
 
 	&__text {
@@ -251,6 +252,7 @@
 
 @media screen and (max-width: 440px) {
 	.content {
+		// margin: 40px auto;
 		&__block--romb:nth-child(odd) &__img, 
 		&__block--romb:nth-child(even) &__img {
 			// left: calc(50% - 103px);
