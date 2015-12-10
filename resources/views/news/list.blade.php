@@ -7,17 +7,40 @@
 @stop
 
 @section('content')
-<div class="container">
-	<div class="content">
-		<div class="title">Новости</div>
-        <ul>
-        @forelse($objects as $object)
-            <li><a href="{{ url('news/' . $object->alias) }}">{{ $object->title }}</a></li>
-        @empty
-            <p>Здесь нет записей!</p>
-        @endforelse
-        </ul>
-	</div>
+<div class="content">
+    <h1>
+        <span class="content__head">Новости</span>
+    </h1>
+    @forelse($objects as $object)
+    <div class="content__block">
+        <div class="content__img">
+            <div class="carousel carousel--big">
+                <div class="item">
+                    <a class="fancybox" rel="group1" href="/uploads/news/originals/{!! $object->img !!}">
+                        <img class="lazyOwl" data-src="/uploads/news/thumbs/full/{!! $object->img !!}" alt="{!! $object->alt !!}">
+                    </a>
+                </div>
+                @forelse($object->galleries()->sortBy('weight', SORT_REGULAR, false) as $img)
+                <div class="item">
+                    <a class="fancybox" rel="group1" href="/uploads/news/originals/{!! $img->img !!}">
+                        <img class="lazyOwl" data-src="/uploads/news/thumbs/full/{!! $img->img !!}" alt="{!! $img->alt !!}">
+                    </a>
+                </div>
+                @empty
+                    <p>Здесь нет записей!</p>
+                @endforelse
+            </div>
+        </div>
+        <div class="content__text">
+            <div class="content__title">{!! $object->title !!}</div>
+            <div class="contact__desc">
+                <p>{!! $object->text !!}</p>
+            </div>
+        </div>
+    </div>
+    @empty
+        <p>Здесь нет записей!</p>
+    @endforelse
     {!! $objects->render() !!}
 </div>
 @stop

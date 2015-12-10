@@ -31,6 +31,8 @@ Route::get('contacts', function()
 	return View::make('contacts');
 });
 
+Route::post('contacts', 'ContactController@store');
+
 Route::get( 'photogalleries', 'PhotogalleryController@index' );
 
 Route::get( 'photogalleries/{alias}', 'PhotogalleryController@show' )

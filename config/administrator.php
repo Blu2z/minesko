@@ -57,6 +57,7 @@ return array(
         'services',
         'banners',
         'news',
+        'news_galleries',
         'collections',
         'collections_galleries',
         'photogalleries',

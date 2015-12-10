@@ -22,6 +22,10 @@ return [
             'title' => 'Title',
             'limit' => 255,
         ],
+        'text' => [
+            'type' => 'wysiwyg',
+            'title' => 'Text',
+        ],
         'alias' => [
             'type' => 'text',
             'title' => 'URL',
@@ -47,7 +51,7 @@ return [
             'sizes' => array(
                 array(65, 57, 'crop', public_path() . '/uploads/collections/thumbs/small/', 100),
                 array(220, 138, 'landscape', public_path() . '/uploads/collections/thumbs/medium/', 100),
-                array(383, 276, 'fit', public_path() . '/uploads/collections/thumbs/full/', 100)
+                array(600, 400, 'auto', public_path() . '/uploads/collections/thumbs/full/', 100)
             )
         ],
         'alt' => [
@@ -58,7 +62,7 @@ return [
     ],
     'rules' => [
         'active' => 'boolean',
-        'alias' => 'required|max:255|regex:([a-z0-9\-])|unique:collections,alias',
+//        'alias' => 'required|max:255|regex:([a-z0-9\-])|unique:collections,alias',
         'title'  => 'required|max:255|unique:collections,title',
         'keywords' => 'max:100',
         'description' => 'max:150',

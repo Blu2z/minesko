@@ -32,6 +32,10 @@ class News extends Model
     {
         return Validator::make($data, self::$rules);
     }
+
+    public function galleries(){
+        return $this->hasMany('App\NewsGallery')->get();
+    }
     
     public function getObjects() {
         return $this->revers()->paginate(10);

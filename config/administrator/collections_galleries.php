@@ -41,7 +41,7 @@ return [
             'sizes' => array(
                 array(65, 57, 'crop', public_path() . '/uploads/collections/thumbs/small/', 100),
                 array(220, 138, 'landscape', public_path() . '/uploads/collections/thumbs/medium/', 100),
-                array(383, 276, 'fit', public_path() . '/uploads/collections/thumbs/full/', 100)
+                array(600, 400, 'auto', public_path() . '/uploads/collections/thumbs/full/', 100)
             )
         ],
         'alt' => [
@@ -51,9 +51,9 @@ return [
         ],
     ],
     'rules' => [
-        'collection' => 'required|exists:collections,id',
+//        'collection' => 'required|exists:collections,id',
         'active' => 'required|boolean',
-        'weight' => 'required|integer|unique:collections_gallery,weight',
+//        'weight' => 'required|integer|unique:collections_gallery,weight',
         'img' => 'required|unique:collections_gallery,img',
         'alt' => 'max:255',
     ],
