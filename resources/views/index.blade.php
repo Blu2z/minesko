@@ -11,7 +11,7 @@
 <div class="slider__head">
 	<div class="slider__main">
 		<ul class="slider__wrapper">
-                    @forelse($banners as $banner)
+                    @foreach($banners as $banner)
 			<li>
 				<div class="slider__img">
 					<img src="/uploads/banners/originals/{{$banner['img']}}" alt="slide1">
@@ -22,9 +22,7 @@
 						<a href="{{ url( $banner['url'] ) }}" class="button">Всегда безупречно и не ищите компромисс…</a></div>
 				</div>
 			</li>
-                    @empty
-                        <p>Здесь нет записей!</p>
-                    @endforelse
+	                @endforeach
 		</ul>
 		<a href="#" class="nav nav--prev"></a>
 		<a href="#" class="nav nav--next"></a>
@@ -44,7 +42,7 @@
         <span class="content__head">о нас</span>
     </h1>
     <div class="content__block">
-        <div class="logo logo--big">
+        <!-- <div class="logo logo--big">
             <span class="logo__lastname">Mineskko</span> <br>
                     <span class="logo__firstname">
                         <span class="clr--red">S</span>
@@ -56,16 +54,14 @@
                         <span>n</span>
                         <span>a</span>
                     </span>
-        </div>
+        </div> -->
         <div class="content__img">
             <img src="./images/news-2.jpg" alt="foto">
         </div>
         <div class="content__text">
             <div class="content__desc">
                 <div class="contact__desc">
-                    <p>
-                        {!! $about->text !!}
-                    </p>
+                   {!! $about->text !!}
                 </div>
             </div>
         </div>

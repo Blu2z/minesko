@@ -1,11 +1,11 @@
 @extends('layout')
 
-@section('title')
-Password recovery
+@section('header')
+<link rel="stylesheet" href="/styles/admin.css">
 @stop
 
 @section('content')
-<div class="container">
+<div class="admin__login contact-form">
     @if (Session::has('status'))
         <div class="alert alert-success">
             {!! Session::get('status') !!}
@@ -15,7 +15,9 @@ Password recovery
             {!! Session::get('error') !!}
         </div>
     @endif
-    <h2>Password recovery</h2>
+    <div class="content__title">
+    	<h2>Востановление пароля</h2>
+    </div>
 
 	@if (Session::has('error'))
 		{{ trans(Session::get('reason')) }}
@@ -25,10 +27,14 @@ Password recovery
 	
 	{!! Form::open(array('url' => url('admin/reset/password'), 'role' => 'form', 'class' => 'form-horizontal')) !!}
 
-		<p>{!! Form::label('email', 'Email') !!}
-		{!! Form::text('email') !!}</p>
+		 <fieldset class="contact-form__row">
+		 	{!! Form::label('email', 'Email') !!}
+			{!! Form::text('email') !!}
+		</fieldset>
 
-		<p>{!! Form::submit('Restore password') !!}</p>
+		 <div class="contact__btn">
+		 	{!! Form::submit('Продолжить', ['class' => 'content__link']) !!}
+		</div>
 
 	{!! Form::close() !!}
 </div>

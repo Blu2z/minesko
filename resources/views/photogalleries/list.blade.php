@@ -17,13 +17,13 @@
             <div class="content__img content__img--galery">
                 <div class="carousel carousel--galery">
                     <div class="item">
-                        <a class="fancybox" rel="galery-evening-dresses" href="/uploads/photogalleries/originals/{!! $object->img !!}">
+                        <a class="fancybox" rel="galery-{!! $object->id !!}" href="/uploads/photogalleries/originals/{!! $object->img !!}">
                             <img class="lazyOwl" src="/uploads/photogalleries/thumbs/full/{!! $object->img !!}" alt="{!! $object->alt !!}">
                         </a>
                     </div>
                     @forelse($object->galleries()->sortBy('weight', SORT_REGULAR, false) as $img)
                     <div class="item">
-                        <a class="fancybox" rel="galery-evening-dresses" href="/uploads/photogalleries/originals/{!! $img->img !!}">
+                        <a class="fancybox" rel="galery-{!! $object->id !!}" href="/uploads/photogalleries/originals/{!! $img->img !!}">
                             <img class="lazyOwl" data-src="/uploads/photogalleries/thumbs/full/{!! $img->img !!}" alt="{!! $img->alt !!}">
                         </a>
                     </div>
