@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use DB;
 
 class AdminTableSeeder extends Seeder
 {
@@ -13,10 +12,10 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        if(!Illuminate\Support\Facades\DB::table('users')->where('email', '=', 'momchev@bigmir.net')->count()){
+        if(!Illuminate\Support\Facades\DB::table('users')->where('email', '=', 'Blu2z@yandex.ru')->count()){
             User::create([
-                'email' => 'momchev@bigmir.net',
-                'password' => Hash::make("pretorian"),
+                'email' => 'Blu2z@yandex.ru',
+                'password' => Hash::make("qweq@"),
                 'firstname' => NULL,
                 'lastname' => NULL,
                 'birth' => NULL,
