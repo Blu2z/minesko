@@ -13,6 +13,7 @@ class CreateCollectionTable extends Migration
             $table->string('alias', 255);
             $table->boolean('active');
             $table->string('title', 255);
+            $table->string('text');
             $table->string('keywords', 100)->nullable();
             $table->string('description', 150)->nullable();
             $table->string('img', 255)->nullable();
