@@ -19,6 +19,15 @@ return [
             'title' => 'Title',
             'limit' => 255,
         ],
+        'description' => [
+            'type' => 'text',
+            'title' => 'Text',
+            'limit' => 255,
+        ],
+        'time' => [
+            'type' => 'number',
+            'title' => 'Time',
+        ],
         'weight' => [
             'type' => 'number',
             'title' => 'Weight',
@@ -44,6 +53,8 @@ return [
     ],
     'rules' => [
         'title' => 'required|max:255|unique:banners,title',
+        'description' => 'required|max:255',
+        'time' => 'integer|max:9999',
         'weight' => 'required|integer|unique:banners,weight',
         'url' => 'required|max:255|regex:([a-z0-9])|unique:banners,url',
         'img' => 'required|unique:banners,img',
