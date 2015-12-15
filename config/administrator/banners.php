@@ -8,7 +8,6 @@ return [
         'id',
         'title',
         'weight',
-        'url',
         'img' => [
             'output' => '<img src="/uploads/banners/thumbs/small/(:value)">'
         ]
@@ -32,11 +31,6 @@ return [
             'type' => 'number',
             'title' => 'Weight',
         ],
-        'url' => [
-            'type' => 'text',
-            'title' => 'URL',
-            'limit' => 255,
-        ],
         'img' => [
             'type' => 'image',
             'title' => 'Image',
@@ -45,9 +39,7 @@ return [
             'length' => 64,
             'size_limit' => 2,
             'sizes' => array(
-                array(65, 57, 'crop', public_path() . '/uploads/banners/thumbs/small/', 100),
-                array(220, 138, 'landscape', public_path() . '/uploads/banners/thumbs/medium/', 100),
-                array(383, 276, 'fit', public_path() . '/uploads/banners/thumbs/full/', 100)
+                array(65, 57, 'crop', public_path() . '/uploads/banners/thumbs/small/', 100)
             )
         ],
     ],
@@ -56,7 +48,6 @@ return [
         'description' => 'required|max:255',
         'time' => 'integer|max:9999',
         'weight' => 'required|integer|unique:banners,weight',
-        'url' => 'required|max:255|regex:([a-z0-9])|unique:banners,url',
         'img' => 'required|unique:banners,img',
     ],
     'form_width' => 400,
