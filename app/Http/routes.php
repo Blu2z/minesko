@@ -6,25 +6,13 @@ Route::get( '/', 'MainController@index' );
 
 Route::get( 'home', 'MainController@index' );
 
-Route::get('about', function()
-{
-	return View::make('about');
-});
-
 Route::get( 'services', 'ServiceController@index' );
 
-Route::get( 'services/{alias}', 'ServiceController@show' )
-    ->where( 'alias', '([a-z\-]{1,})' );
-
-Route::get( 'news', 'NewsController@index' );
-
-Route::get( 'news/{alias}', 'NewsController@show' )
-    ->where( 'alias', '([a-z\-]{1,})' );
+Route::get( 'photogalleries', 'PhotogalleryController@index' );
 
 Route::get( 'collections', 'CollectionController@index' );
 
-Route::get( 'collections/{alias}', 'CollectionController@show' )
-    ->where( 'alias', '([a-z\-]{1,})' );
+Route::get( 'news', 'NewsController@index' );
 
 Route::get('contacts', function()
 {
@@ -32,11 +20,6 @@ Route::get('contacts', function()
 });
 
 Route::post('contacts', 'ContactController@store');
-
-Route::get( 'photogalleries', 'PhotogalleryController@index' );
-
-Route::get( 'photogalleries/{alias}', 'PhotogalleryController@show' )
-    ->where( 'alias', '([a-z\-]{1,})' );
 
 Route::group(array('prefix' => 'administration'), function()
 {

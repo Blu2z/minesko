@@ -5,45 +5,42 @@ return [
     'single' => 'collection',
     'model' => 'App\Collection',
     'columns' => [
-        'id',
-        'active',
-        'title',
+        'id' => [
+            'title' => 'Идентификатор',
+            'select' => '(:table).id',
+        ],
+        'title' => [
+            'title' => 'Название',
+            'select' => '(:table).title',
+        ],
         'img' => [
+            'title' => 'Главное изображение',
             'output' => '<img src="/uploads/collections/thumbs/small/(:value)">'
         ]
     ],
     'edit_fields' => [
-        'active' => [
-            'type' => 'bool',
-            'title' => 'Active',
-        ],
         'title' => [
             'type' => 'text',
-            'title' => 'Title',
+            'title' => 'Название',
             'limit' => 255,
         ],
         'text' => [
             'type' => 'wysiwyg',
-            'title' => 'Text',
-        ],
-        'alias' => [
-            'type' => 'text',
-            'title' => 'URL',
-            'limit' => 255,
+            'title' => 'Текст',
         ],
         'keywords' => [
             'type' => 'text',
-            'title' => 'keywords',
+            'title' => 'Ключевые слова',
             'limit' => 100,
         ],
         'description' => [
             'type' => 'text',
-            'title' => 'description',
+            'title' => 'Короткое описание',
             'limit' => 150,
         ],
         'img' => [
             'type' => 'image',
-            'title' => 'Preview image',
+            'title' => 'Главное изображение',
             'location' => public_path() . '/uploads/collections/originals/',
             'naming' => 'random',
             'length' => 64,
@@ -56,13 +53,11 @@ return [
         ],
         'alt' => [
             'type' => 'text',
-            'title' => 'About',
+            'title' => 'Альтернативный текст',
             'limit' => 255,
         ],
     ],
     'rules' => [
-        'active' => 'boolean',
-//        'alias' => 'required|max:255|regex:([a-z0-9\-])|unique:collections,alias',
         'title'  => 'required|max:255|unique:collections,title',
         'keywords' => 'max:100',
         'description' => 'max:150',

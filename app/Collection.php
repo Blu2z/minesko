@@ -19,8 +19,6 @@ class Collection extends Model
     protected $hidden = [ 'deleted_at', 'created_at', 'updated_at'];
 
     protected static $rules = [
-        'active' => 'boolean',
-        'alias' => 'required|max:255|regex:([a-z0-9\-])|unique:collections,alias',
         'title'  => 'required|max:255|unique:collections,title',
         'keywords' => 'max:100',
         'description' => 'max:150',
@@ -37,19 +35,11 @@ class Collection extends Model
         return $this->hasMany('App\CollectionsGallery')->get();
     }
     
-    public function getActive() {
-        return $this->revers()->active()->paginate(10);
+    public function getAll() {
+        return $this->revers()->paginate(10);
     }
 
     public function scopeRevers($query){
         $query->orderBy('id', 'desc');
-    }
-
-    public function scopeActive($query){
-        $query->where(['active' => 1]);
-    }
-
-    public function getByAlias($alias){
-        return $this->where('alias', $alias)->get();
     }
 }
