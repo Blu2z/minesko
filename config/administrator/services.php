@@ -9,39 +9,38 @@ return [
         'title',
         'keywords',
         'description',
+        'text',
         'img' => [
             'output' => '<img src="/uploads/services/thumbs/small/(:value)">'
-        ],
-        'text'
+        ]
     ],
     'edit_fields' => [
+        'on_top' => [
+            'type' => 'bool',
+            'title' => 'Выводить на главную'
+        ],
         'title' => [
             'type' => 'text',
-            'title' => 'Title',
-            'limit' => 255,
-        ],
-        'alias' => [
-            'type' => 'text',
-            'title' => 'URL',
+            'title' => 'Название',
             'limit' => 255,
         ],
         'keywords' => [
             'type' => 'text',
-            'title' => 'keywords',
+            'title' => 'Ключевые слова',
             'limit' => 100,
         ],
         'description' => [
             'type' => 'text',
-            'title' => 'description',
+            'title' => 'Короткое описание',
             'limit' => 150,
         ],
         'text' => [
             'type' => 'wysiwyg',
-            'title' => 'Text',
+            'title' => 'Текст',
         ],
         'img' => [
             'type' => 'image',
-            'title' => 'Image',
+            'title' => 'Изображение',
             'location' => public_path() . '/uploads/services/originals/',
             'naming' => 'random',
             'length' => 64,
@@ -54,7 +53,7 @@ return [
         ],
         'alt' => [
             'type' => 'text',
-            'title' => 'About',
+            'title' => 'Альтернативное описание для изображения',
             'limit' => 255,
         ],
     ],
