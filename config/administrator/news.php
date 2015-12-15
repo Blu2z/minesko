@@ -5,41 +5,42 @@ return [
     'single' => 'news',
     'model' => 'App\News',
     'columns' => [
-        'id',
-        'title',
-        'description',
+        'id' => [
+            'title' => 'Идентификатор',
+            'select' => '(:table).id',
+        ],
+        'title' => [
+            'title' => 'Название',
+            'select' => '(:table).title',
+        ],
         'img' => [
+            'title' => 'Главное изображение',
             'output' => '<img src="/uploads/news/thumbs/small/(:value)">'
         ]
     ],
     'edit_fields' => [
         'title' => [
             'type' => 'text',
-            'title' => 'Title',
-            'limit' => 255,
-        ],
-        'alias' => [
-            'type' => 'text',
-            'title' => 'URL',
+            'title' => 'Название',
             'limit' => 255,
         ],
         'keywords' => [
             'type' => 'text',
-            'title' => 'keywords',
+            'title' => 'Ключевые слова',
             'limit' => 100,
         ],
         'description' => [
             'type' => 'text',
-            'title' => 'description',
+            'title' => 'Короткое описание',
             'limit' => 150,
         ],
         'text' => [
             'type' => 'wysiwyg',
-            'title' => 'Text',
+            'title' => 'Текст',
         ],
         'img' => [
             'type' => 'image',
-            'title' => 'Image',
+            'title' => 'Главное изображение',
             'location' => public_path() . '/uploads/news/originals/',
             'naming' => 'random',
             'length' => 64,
@@ -52,12 +53,11 @@ return [
         ],
         'alt' => [
             'type' => 'text',
-            'title' => 'About',
+            'title' => 'Альтернативный текст',
             'limit' => 255,
         ],
     ],
     'rules' => [
-        'alias' => 'required|regex:([a-z0-9\-])|unique:news,alias',
         'title'  => 'required|max:255|unique:news,title',
         'keywords' => 'max:100',
         'description' => 'max:150',

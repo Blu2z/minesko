@@ -5,30 +5,37 @@ return [
     'single' => 'news photo',
     'model' => 'App\NewsGallery',
     'columns' => [
-        'id',
-        'active',
-        'weight',
+        'id' => [
+            'title' => 'Идентификатор',
+            'select' => '(:table).id',
+        ],
+        'collection_title' => [
+            'title' => 'Название новости',
+            'relationship' => 'news',
+            'select' => '(:table).title',
+        ],
+        'weight' => [
+            'title' => 'Очередность',
+            'select' => '(:table).weight',
+        ],
         'img' => [
+            'title' => 'Изображение',
             'output' => '<img src="/uploads/news/thumbs/small/(:value)">'
         ]
     ],
     'edit_fields' => [
         'news' => [
             'type' => 'relationship',
-            'title' => 'News',
+            'title' => 'Новость',
             'name_field' => 'title'
-        ],
-        'active' => [
-            'type' => 'bool',
-            'title' => 'Active'
         ],
         'weight' => [
             'type' => 'number',
-            'title' => 'Foremost',
+            'title' => 'Очередность',
         ],
         'img' => [
             'type' => 'image',
-            'title' => 'Image',
+            'title' => 'Изображение',
             'location' => public_path() . '/uploads/news/originals/',
             'naming' => 'random',
             'length' => 64,
@@ -41,12 +48,11 @@ return [
         ],
         'alt' => [
             'type' => 'text',
-            'title' => 'About',
+            'title' => 'Альтернативный текст',
             'limit' => 255,
         ],
     ],
     'rules' => [
-        'active' => 'required|boolean',
         'img' => 'required|unique:news_gallery,img',
         'alt' => 'max:255',
     ],
