@@ -1,4 +1,8 @@
-<!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <title>Page Not Found :(</title> <style>::-moz-selection {
+<!-- <!doctype html> <html lang="en"> <head> <meta charset="utf-8"> <title>Page Not Found :(</title>
+  <link rel="stylesheet" href="/styles/vendor.css">
+
+    <link rel="stylesheet" href="/styles/main.css"> -->
+<!--   <style>::-moz-selection {
         background: #b3d4fc;
         text-shadow: none;
       }
@@ -125,4 +129,48 @@
       input::-moz-focus-inner {
         padding: 0;
         border: 0;
-      }</style> </head> <body> <div class="container"> <h1>Not found <span>:(</span></h1> <p>Sorry, but the page you were trying to view does not exist.</p> <p>It looks like this was the result of either:</p> <ul> <li>a mistyped address</li> <li>an out-of-date link</li> </ul> <script>var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2),GOOG_FIXURL_SITE = location.host;</script> <script src="//linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script> </div> </body> </html>
+      }</style>  -->
+      <style>
+          .error {
+            position: relative;
+            min-height: 200px;
+            margin-bottom: 80px;
+          }
+          .logo--big.error {
+            position: absolute;
+            top: calc(50% - 140px);
+            left: calc(50% - 130px);
+            width: 100%;
+            height: 100%;
+          }
+          .logo--big.error .logo__lastname{
+            font-size: 125px;
+          }
+      </style>
+      <!-- </head> 
+      <body> --> 
+@extends('layout')
+
+@section('content')
+      <!-- <div class="container"> <h1>Not found <span>:(</span></h1> <p>Sorry, but the page you were trying to view does not exist.</p> <p>It looks like this was the result of either:</p> <ul> <li>a mistyped address</li> <li>an out-of-date link</li> </ul> <script>var GOOG_FIXURL_LANG = (navigator.language || '').slice(0,2),GOOG_FIXURL_SITE = location.host;</script> <script src="//linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script> </div>  -->
+<div class="error">
+<div class="logo logo--big error">
+      <span class="logo__lastname">404</span> <br>
+      <span class="logo__firstname">
+        <span class="clr--red">О</span>
+        <span>ш</span>
+        <span>и</span>
+        <span>б</span>
+        <span>к</span>
+        <span>а</span>
+      </span>
+      <br>
+      <br>
+      <br>
+      <p>
+      Такой страницы не существует.
+    </p>
+    </div>
+</div>
+@stop
+      <!-- </body> </html> -->
