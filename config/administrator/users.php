@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'title' => 'Administrators',
+    'title' => 'Администраторы',
     'single' => 'administrator',
     'model' => 'App\User',
     'columns' => [
-        'id',
-        'email',
-        'firstname',
-        'lastname'
+        'id' => ['title' => 'Идентификатор'],
+        'email' => ['title' => 'Почта'],
+        'firstname' => ['title' => 'Имя'],
+        'lastname' => ['title' => 'Фамилия']
     ],
     'edit_fields' => [
         'email' => [
@@ -18,22 +18,22 @@ return [
         ],
         'firstname' => [
             'type' => 'text',
-            'title' => 'Name',
+            'title' => 'Имя',
             'limit' => 25,
         ],
         'lastname' => [
             'type' => 'text',
-            'title' => 'Last name',
+            'title' => 'Фамилия',
             'limit' => 25,
         ],
         'password' => [
             'type' => 'password',
-            'title' => 'Password',
+            'title' => 'Пароль',
             'limit' => 25,
         ],
         'birth' => [
             'type' => 'date',
-            'title' => 'Birth date',
+            'title' => 'Дата рождения',
             'date_format' => 'yyyy-mm-dd',
         ],
     ],

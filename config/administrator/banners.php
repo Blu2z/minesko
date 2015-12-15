@@ -1,39 +1,40 @@
 <?php
 
 return [
-    'title' => 'Banners',
+    'title' => 'Баннеры',
     'single' => 'banner',
     'model' => 'App\Banner',
     'columns' => [
-        'id',
-        'title',
-        'weight',
+        'id' => ['title' => 'Идентификатор'],
+        'title'  => ['title' => 'Название'],
+        'weight' => ['title' => 'Позиция'],
         'img' => [
-            'output' => '<img src="/uploads/banners/thumbs/small/(:value)">'
+            'output' => '<img src="/uploads/banners/thumbs/small/(:value)">',
+            'title' => 'Изображение'
         ]
     ],
     'edit_fields' => [
         'title' => [
             'type' => 'text',
-            'title' => 'Title',
+            'title' => 'Название',
             'limit' => 255,
         ],
         'description' => [
             'type' => 'text',
-            'title' => 'Text',
+            'title' => 'Текст',
             'limit' => 255,
         ],
         'time' => [
             'type' => 'number',
-            'title' => 'Time',
+            'title' => 'Время появления, мс',
         ],
         'weight' => [
             'type' => 'number',
-            'title' => 'Weight',
+            'title' => 'Позиция',
         ],
         'img' => [
             'type' => 'image',
-            'title' => 'Image',
+            'title' => 'Изображение',
             'location' => public_path() . '/uploads/banners/originals/',
             'naming' => 'random',
             'length' => 64,

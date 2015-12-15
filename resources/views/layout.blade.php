@@ -41,7 +41,7 @@
                 caseLimit: 1, //кол-во товаров в витрине
                 spaceSection: 0, //расстояние между секциями
                 animation: 'slide', //тип анимации
-                timer: false, //автопереключение
+                timer: 6000, //автопереключение
                 repeat: true, //показ слайдов по кругу
                 animBox: 'slider__anim', // селектор всплывающих блоков
                 countBox: 'slider__ind', //селектор списка
@@ -105,6 +105,13 @@
                 pagination: false,
                 navigationText: false
             });
+
+            var loc = window.location.href.replace(/[\/]$/, '');
+
+            $('.head').find('a').each(function(index, el) {
+                if(loc === $(this).attr('href')) $(this).addClass('active');
+            });
+
         </script>
         
         @yield('scripts')

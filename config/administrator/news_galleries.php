@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'News Gallery',
+    'title' => 'Галерея новостей',
     'single' => 'news photo',
     'model' => 'App\NewsGallery',
     'columns' => [

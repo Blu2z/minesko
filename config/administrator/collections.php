@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Collections',
+    'title' => 'Коллекции',
     'single' => 'collection',
     'model' => 'App\Collection',
     'columns' => [

@@ -12,6 +12,39 @@
 	<span class="content__head">Контакты</span>
 </h1>
 	<div class="contact__container">
+		<div class="content__title content__title--map">карта</div>
+		<script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=tLcseVnMefjaoS8WTn9EeXLNY1U0TSsj&id=map"></script>
+		<div class="map__wrap">
+			<div id="map" class="map"></div>
+		</div>
+
+
+		
+
+
+
+		<div class="contact__info">
+			<div class="content__title">контакты</div>
+			<ul class="contact__list">
+				<!-- <li>наши контакты:</li> -->
+				<li><i class="fa fa-map-marker"></i> Украина, г. Одесса, ул Дерибасовская 1а</li>
+				<li><i class="fa fa-phone"></i>097-470-72-36</li>
+				<li><i class="fa fa-envelope-o"></i>minesko@gmail.com</li>
+				<li><i class="fa fa-skype"></i>S.Mineskko</li>
+				<li><i class="fa fa-instagram"></i>S.Mineskko</li>
+				<li>
+					<ul class="contact__socials">
+						<li><a href="#"><i class="fa fa-vk"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="contact__container">
+		
 		<div class="content__title">Обратная связь</div>
 
                 {!! Form::open(array('url'=>'contacts', 'method'=>'POST', 'id'=>'contactForm', 'class'=>'widget__content contact-form')) !!}
@@ -44,36 +77,7 @@
 			<p id="result"></p>
 		</form>
 
-
-
-		<div class="contact__info">
-			<div class="content__title">контакты</div>
-			<ul class="contact__list">
-				<!-- <li>наши контакты:</li> -->
-				<li><i class="fa fa-map-marker"></i> Украина, г. Одесса, ул Дерибасовская 1а</li>
-				<li><i class="fa fa-phone"></i>097-470-72-36</li>
-				<li><i class="fa fa-envelope-o"></i>minesko@gmail.com</li>
-				<li><i class="fa fa-skype"></i>S.Mineskko</li>
-				<li><i class="fa fa-instagram"></i>S.Mineskko</li>
-				<li>
-					<ul class="contact__socials">
-						<li><a href="#"><i class="fa fa-vk"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="contact__container">
-		<div class="content__title content__title--map">карта</div>
-		<script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=tLcseVnMefjaoS8WTn9EeXLNY1U0TSsj&id=map"></script>
-		<div class="map__wrap">
-			<div id="map" class="map"></div>
-		</div>
-
-		<div class="content__title">о нас</div>
+		<div class="content__title"></div>
 
 		<div class="logo logo--big">
 			<span class="logo__lastname">Mineskko</span> <br>
