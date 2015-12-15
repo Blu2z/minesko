@@ -1,34 +1,41 @@
 <?php
 
 return [
-    'title' => 'Photogalleries Gallery',
-    'single' => 'image',
+    'title' => 'Изображения фотогаллерей',
+    'single' => 'изображение',
     'model' => 'App\PhotogalleriesGallery',
     'columns' => [
-        'id',
-        'active',
-        'weight',
+        'id' => [
+            'title' => 'Идентификатор',
+            'select' => '(:table).id',
+        ],
+        'collection_title' => [
+            'title' => 'Название коллекции',
+            'relationship' => 'photogallery',
+            'select' => '(:table).title',
+        ],
+        'weight' => [
+            'title' => 'Очередность',
+            'select' => '(:table).weight',
+        ],
         'img' => [
+            'title' => 'Изображение',
             'output' => '<img src="/uploads/photogalleries/thumbs/small/(:value)">'
         ]
     ],
     'edit_fields' => [
         'photogallery' => [
             'type' => 'relationship',
-            'title' => 'Photogallery',
+            'title' => 'Фотогаллерея',
             'name_field' => 'title'
-        ],
-        'active' => [
-            'type' => 'bool',
-            'title' => 'Active'
         ],
         'weight' => [
             'type' => 'number',
-            'title' => 'Foremost',
+            'title' => 'Очередность',
         ],
         'img' => [
             'type' => 'image',
-            'title' => 'Image',
+            'title' => 'Изображение',
             'location' => public_path() . '/uploads/photogalleries/originals/',
             'naming' => 'random',
             'length' => 64,
@@ -41,15 +48,12 @@ return [
         ],
         'alt' => [
             'type' => 'text',
-            'title' => 'About',
+            'title' => 'Альтернативный текст',
             'limit' => 255,
         ],
     ],
     'rules' => [
-//        'photogallery' => 'required|exists:photogalleries,id',
-        'active' => 'required|boolean',
-//        'weight' => 'required|integer|unique:photogalleries_gallery,weight',
-        'img' => 'required|unique:collections_gallery,img',
+        'img' => 'required|unique:photogalleries_gallery,img',
         'alt' => 'max:255',
     ],
     'form_width' => 700,

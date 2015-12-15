@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'title' => 'Collections Gallery',
-    'single' => 'image',
+    'title' => 'Изображения коллекций',
+    'single' => 'изображение',
     'model' => 'App\CollectionsGallery',
     'columns' => [
         'id' => [

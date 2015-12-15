@@ -45,6 +45,5 @@
         <p>Здесь нет записей!</p>
     @endforelse
     </div>
-    {!! $objects->render() !!}
 </div>
 @stop

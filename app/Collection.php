@@ -36,7 +36,7 @@ class Collection extends Model
     }
     
     public function getAll() {
-        return $this->revers()->paginate(10);
+        return $this->revers()->get();
     }
 
     public function scopeRevers($query){

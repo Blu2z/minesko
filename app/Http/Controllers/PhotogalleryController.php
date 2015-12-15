@@ -12,12 +12,6 @@ class PhotogalleryController extends Controller
 {
     public function index(Photogallery $photogallery)
     {
-        return view('photogalleries.list', ['objects' => $photogallery->getActive()]);
-    }
-
-    public function show(Photogallery $photogallery, $alias)
-    {
-        $object = $photogallery->getByAlias($alias);
-        return $object->count() ? view('photogalleries.show', ['object' => $object[0]]) : view('404');
+        return view('photogalleries.list', ['objects' => $photogallery->getAll()]);
     }
 }

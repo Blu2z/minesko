@@ -37,19 +37,11 @@ class Photogallery extends Model
         return $this->hasMany('App\PhotogalleriesGallery')->get();
     }
     
-    public function getActive() {
-        return $this->revers()->active()->paginate(10);
+    public function getAll() {
+        return $this->revers()->get();
     }
 
     public function scopeRevers($query){
         $query->orderBy('id', 'desc');
-    }
-
-    public function scopeActive($query){
-        $query->where(['active' => 1]);
-    }
-
-    public function getByAlias($alias){
-        return $this->where('alias', $alias)->get();
     }
 }
