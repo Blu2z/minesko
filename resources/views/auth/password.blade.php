@@ -6,36 +6,17 @@
 
 @section('content')
 <div class="admin__login contact-form">
-    @if (Session::has('status'))
-        <div class="alert alert-success">
-            {!! Session::get('status') !!}
+    <p>{!! isset($message) ? $message : '' !!}</p>
+    <form class="form-horizontal" accept-charset="UTF-8" role="form" method="post" action="{!! url('administration/reset/password') !!}">
+        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+        <fieldset class="contact-form__row">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" value="{!! isset($email) ? $email : '' !!}" required>
+            {!! isset($error['email'][0]) ? $error['email'][0] : '' !!}
+        </fieldset>
+        <div class="contact__btn">
+            <input class="content__link" type="submit" value="Продолжить">
         </div>
-    @elseif (Session::has('error'))
-        <div class="alert alert-danger">
-            {!! Session::get('error') !!}
-        </div>
-    @endif
-    <div class="content__title">
-    	<h2>Востановление пароля</h2>
-    </div>
-
-	@if (Session::has('error'))
-		{{ trans(Session::get('reason')) }}
-	@elseif (Session::has('success'))
-		An email with the password reset has been sent.
-	@endif
-	
-	{!! Form::open(array('url' => url('admin/reset/password'), 'role' => 'form', 'class' => 'form-horizontal')) !!}
-
-		 <fieldset class="contact-form__row">
-		 	{!! Form::label('email', 'Email') !!}
-			{!! Form::text('email') !!}
-		</fieldset>
-
-		 <div class="contact__btn">
-		 	{!! Form::submit('Продолжить', ['class' => 'content__link']) !!}
-		</div>
-
-	{!! Form::close() !!}
+    </form>
 </div>
 @stop

@@ -19,11 +19,6 @@ class PasswordController extends Controller
         'password'  => 'required|confirmed|min:6',
     ];
 
-    public function __construct()
-    {
-//        $this->middleware('guest');
-    }
-
     public function getEmail()
     {
         return view('auth.password');
@@ -34,11 +29,10 @@ class PasswordController extends Controller
         $email = $request->only('email');
         $validator = Validator::make(
             array('email' => $email['email']),
-            array('email' => 'required|email')
+            array('email' => 'required|email|exists:users,email')
         );
         if ($validator->fails()){
-            $this->data['email'] = $email['email'];
-            return responseAnswer(true, $this->data, trans('rest.2', ['email' => $email]), 7, $validator->errors());
+            return view('auth.password', ['email' => $email['email'], 'error' => $validator->errors()->toArray()]);
         }
 
         $response = Password::sendResetLink($email, function (Message $message) {
@@ -47,11 +41,10 @@ class PasswordController extends Controller
 
         switch ($response) {
             case Password::RESET_LINK_SENT:
-                return $this->responseAnswer(false, NULL, trans($response));
+                return view('auth.success', ['message' => trans($response)]);
 
             case Password::INVALID_USER:
-                $this->data['email'] = $email['email'];
-                return $this->responseAnswer(true, $this->data, trans($response), 4);
+                return view('auth.password', ['email' => $email['email'], 'message' => trans($response)]);
         }
     }
 
@@ -78,7 +71,7 @@ class PasswordController extends Controller
         $filter = $this->validator($credentials);
 
         if($filter->fails()){
-            return $this->responseAnswer(true, NULL, trans('rest.14'), 14, $filter->errors());
+            return view('auth.reset', ['token' => $credentials['token'], 'error' => $filter->errors()->toArray()]);
         }
 
         $response = Password::reset($credentials, function ($user, $password) {
@@ -87,20 +80,15 @@ class PasswordController extends Controller
 
         switch ($response) {
             case Password::PASSWORD_RESET:
-                $this->data = [
-                            'authenticated' => true,
-                            'role' => Auth::user()->isAdmin ? 'admin' : 'user',
-                        ];
-                return $this->responseAnswer(false, $this->data, trans($response));
+                return redirect('admin');
 
             default:
-                $this->data = [
-                            'email' => $credentials['email'],
-                            'token' => $credentials['token'],
-                            'authenticated' => false,
-                            'role' => 'guest',
-                        ];
-                return $this->responseAnswer(true, NULL, trans($response), 1);
+                return view('auth.reset',
+                    [
+                        'email' => $credentials['email'],
+                        'token' => $credentials['token'],
+                        'message' => trans($response)
+                    ]);
         }
     }
 

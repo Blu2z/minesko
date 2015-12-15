@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
 
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -38,7 +37,7 @@
     <body>
         <div class="jumbotron">
 			<div class="container">
-				<p><a href="<?php echo url('/password/reset/'.$token); ?>">Click here to reset your password!</a></p>
+				<p><a href="<?php echo url('administration/password/reset/'.$token); ?>">Click here to reset your password!</a></p>
 			</div>
 		</div>
     </body>

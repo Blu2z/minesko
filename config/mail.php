@@ -16,6 +16,7 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'mail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'cukama@bigmir.net', 'name' => 'Adninistration'],
+    'from' => ['address' => 'minesko@gmail.com', 'name' => 'Mineskko Svetlana'],
 
     /*
     |--------------------------------------------------------------------------

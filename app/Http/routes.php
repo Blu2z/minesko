@@ -33,7 +33,7 @@ Route::group(array('prefix' => 'administration'), function()
 
     Route::post( 'reset/password', 'Admin'.DS.'PasswordController@postEmail' );
 
-    Route::get('password/reset', 'Admin'.DS.'PasswordController@getReset');
+    Route::get('password/reset/{token}', 'Admin'.DS.'PasswordController@getReset');
 
     Route::post( 'password/reset', 'Admin'.DS.'PasswordController@postReset' );
 });
