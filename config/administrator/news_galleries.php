@@ -36,7 +36,7 @@ return [
             'sizes' => array(
                 array(65, 57, 'crop', public_path() . '/uploads/news/thumbs/small/', 100),
                 array(220, 138, 'landscape', public_path() . '/uploads/news/thumbs/medium/', 100),
-                array(600, 400, 'auto', public_path() . '/uploads/news/thumbs/full/', 100)
+                array(400, 600, 'auto', public_path() . '/uploads/news/thumbs/full/', 100)
             )
         ],
         'alt' => [

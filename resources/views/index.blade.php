@@ -19,7 +19,7 @@
 				<div class="slider__anim block block--cost" data-time="{!! $banner['time'] !!}">
 					<div class="block--cost__name">{{ $banner['title'] }}</div>
 					<div class="block--cost__btn">
-						<a href="{{ url( $banner['url'] ) }}" class="button">{{ $banner['description'] }}</a></div>
+						<span class="button">{{ $banner['description'] }}</span></div>
 				</div>
 			</li>
 	                @endforeach

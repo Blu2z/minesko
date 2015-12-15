@@ -12,29 +12,28 @@
         <span class="content__head">Новости</span>
     </h1>
     @forelse($objects as $object)
-    <div class="content__block">
+    <div class="content__block clearfix">
+        <div class="content__title">{!! $object->title !!}</div>
         <div class="content__img">
             <div class="carousel carousel--big">
                 <div class="item">
-                    <a class="fancybox" rel="group1" href="/uploads/news/originals/{!! $object->img !!}">
+                    <a class="fancybox" rel="group-{!! $object->id !!}" href="/uploads/news/originals/{!! $object->img !!}">
                         <img class="lazyOwl" data-src="/uploads/news/thumbs/full/{!! $object->img !!}" alt="{!! $object->alt !!}">
                     </a>
                 </div>
-                @forelse($object->galleries()->sortBy('weight', SORT_REGULAR, false) as $img)
+                @foreach($object->galleries()->sortBy('weight', SORT_REGULAR, false) as $img)
                 <div class="item">
-                    <a class="fancybox" rel="group1" href="/uploads/news/originals/{!! $img->img !!}">
+                    <a class="fancybox" rel="group-{!! $object->id !!}" href="/uploads/news/originals/{!! $img->img !!}">
                         <img class="lazyOwl" data-src="/uploads/news/thumbs/full/{!! $img->img !!}" alt="{!! $img->alt !!}">
                     </a>
                 </div>
-                @empty
-                    <p>Здесь нет записей!</p>
-                @endforelse
+                @endforeach
             </div>
         </div>
         <div class="content__text">
-            <div class="content__title">{!! $object->title !!}</div>
+            
             <div class="contact__desc">
-                <p>{!! $object->text !!}</p>
+                {!! $object->text !!}
             </div>
         </div>
     </div>
