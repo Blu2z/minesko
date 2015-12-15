@@ -46,9 +46,7 @@ return [
             'length' => 64,
             'size_limit' => 2,
             'sizes' => array(
-                array(65, 57, 'crop', public_path() . '/uploads/services/thumbs/small/', 100),
-                array(220, 138, 'landscape', public_path() . '/uploads/services/thumbs/medium/', 100),
-                array(383, 276, 'fit', public_path() . '/uploads/services/thumbs/full/', 100)
+                array(65, 57, 'crop', public_path() . '/uploads/services/thumbs/small/', 100)
             )
         ],
         'alt' => [

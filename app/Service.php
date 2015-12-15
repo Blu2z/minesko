@@ -41,4 +41,8 @@ class Service extends Model
     public function geByAlias($alias){
         return $this->where('alias', $alias)->get();
     }
+
+    public function getOnTop(){
+        return $this->where('on_top', '=', 1)->get();
+    }
 }

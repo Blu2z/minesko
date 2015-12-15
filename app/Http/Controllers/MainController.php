@@ -13,11 +13,11 @@ use App\PhotogalleriesGallery;
 
 class MainController extends Controller
 {
-    public function index(Page $page, PhotogalleriesGallery $photogalleriesGallery, Banner $banner)
+    public function index(Page $page, PhotogalleriesGallery $photogalleriesGallery, Banner $banner, Service $service)
     {
         $about = $page->geByTitle('about');
         $banners = $banner->getByWeight();
-        $services = Service::all();
+        $services = $service->getOnTop();
         $gallery = $photogalleriesGallery->random();
         return view('index', [
             'banners' => $banners,
