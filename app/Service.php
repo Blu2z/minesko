@@ -45,4 +45,8 @@ class Service extends Model
     public function getOnTop(){
         return $this->where('on_top', '=', 1)->get();
     }
+    
+    public function notOnTop(){
+        return $this->where('on_top', '=', 0)->get();
+    }
 }

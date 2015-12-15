@@ -10,9 +10,9 @@ use App\Service;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index(Service $service)
     {
-        return view('services.list', ['objects' => Service::all()->toArray()]);
+        return view('services.list', ['objects' => $service->notOnTop()->toArray()]);
     }
 
     public function show(Service $service, $alias)
